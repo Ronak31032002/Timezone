@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Time-Display</title>
+	<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&display=swap" rel="stylesheet">
+	<style>
+		body {
+			background: linear-gradient(to right, #fc4a1a, #f7b733);
+			overflow:hidden;
+		}
+		h1 {
+			color:black;
+			font-size: 64px;
+			font-family: 'Archivo Narrow', sans-serif;
+		}
+       .time {
+       	  height: 250px;
+       	  width: 50%;
+       	  margin-left:35%;
+       	  margin-top:5%;
+       	  color:white;
+          font-family: 'Archivo Narrow', sans-serif;
+          font-size:72px;
+          text-shadow: 20px 20px 60px black;
+        }
+        .footer {
+          height: 70px;
+          width: 100%;
+          background-color: black;
+          bottom: 10px;
+          position: fixed;
+          font-family: 'Archivo Narrow',sans-serif;
+          color:white;
+          padding-left:10%;
+          font-size: 24px;
+          float:left;
+          padding-top: 30px;
+        }
+
+        @media only screen and (min-width: 310px) and (max-width: 1000px){
+          body h1{
+            font-size: 152px;
+          }
+          .time {
+            font-size: 140px;
+            margin-left:20%;
+          }
+           .footer {
+          height: 150px;
+          width: 100%;
+          background-color: black;
+          bottom: 10px;
+          position: fixed;
+          font-family: 'Archivo Narrow',sans-serif;
+          color:white;
+          padding-left:10%;
+          font-size: 42px;
+          float:left;
+          padding-top: 75px;
+        }
+
+        }
+	</style>
+</head>
+<body onload = "showtime()">
+	<h1><center>Ronak's Digital Time Zone</center></h1>
+         <div class="time" id = "time">
+         </div><br>
+         <script>
+         	var mytime = setInterval(showtime ,1000);
+         	function showtime() {
+		var date = new Date();
+		let year = date.getFullYear();
+		var dy = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+		var day = dy[date.getDay()];
+		var mnth = ["January","February","March","April","May","June","July","August","September","October","November","Descember"];
+		var month = mnth[date.getMonth()];
+		var dte = date.getDate();
+		var years = date.getFullYear();
+        var hrs = date.getHours();
+        var min = date.getMinutes();
+        let secs = date.getSeconds();
+        var am = "AM";
+        var pm = "PM";
+        if(hrs > 12) {
+        var time = hrs+':'+min+':'+secs+'&nbsp;&nbsp;'+pm+'<br>'+day+'<br>'+dte+month+'&nbsp;&nbsp;'+years;
+    }
+    else {
+    	 var time = hrs+':'+min+':'+secs+'&nbsp;'+am+'&nbsp;&nbsp;'+day+'<br>'+dte+'&nbsp;&nbsp;'+month+'&nbsp;&nbsp;'+years;
+       
+    }
+        setInterval(1000);
+        time = document.getElementById('time').innerHTML = time;
+        var text = 'Copyrights Reserved '+years+' By Ronak Lala';
+        text = document.getElementById('footer').innerHTML = text;
+    }
+	</script>
+  <div class="footer" id = "footer">
+  </div>
+</body>
+</html>
